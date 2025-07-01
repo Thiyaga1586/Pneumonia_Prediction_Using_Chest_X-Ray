@@ -6,7 +6,7 @@ This repository showcases a deep learning–powered medical imaging application 
 
 ## Live Demo
 
-🔗 **[Try the Web App Here]([https://your-hf-space-link.hf.space](https://thiyaga158-pneumonia-detector.hf.space/))**  
+🔗 [Try the Web App Here]([https://your-hf-space-link.hf.space](https://thiyaga158-pneumonia-detector.hf.space/)) 
 
 ---
 
@@ -93,7 +93,7 @@ interface.launch(share=True)
 
 ## License
 
-This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for more info.
+This project is licensed under the [Apache 2.0 License](LICENSE)..
 
 ---
 
