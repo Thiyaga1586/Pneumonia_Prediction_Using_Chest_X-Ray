@@ -3,10 +3,9 @@
 This repository showcases a deep learning–powered medical imaging application that detects **Pneumonia vs Normal** from chest X-ray images using a custom-designed CNN model with **accuracy ~97%**. The model is visualized using Grad-CAM and deployed using **Gradio on Hugging Face Spaces**.
 
 ---
-
 ## Live Demo
 
-🔗 [Try the Web App Here]([https://your-hf-space-link.hf.space](https://thiyaga158-pneumonia-detector.hf.space/)) 
+🔗 **[Try the Web App Here](https://thiyaga158-pneumonia-detector.hf.space/)**  
 
 ---
 
