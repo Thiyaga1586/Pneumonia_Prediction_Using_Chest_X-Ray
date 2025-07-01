@@ -1,11 +1,17 @@
-# Pneumonia Detection with Grad-CAM (Chest X-ray Classification)
+# Pneumonia Detection with Chest X-ray:
 
 This repository showcases a deep learning–powered medical imaging application that detects **Pneumonia vs Normal** from chest X-ray images using a custom-designed CNN model with **accuracy ~97%**. The model is visualized using Grad-CAM and deployed using **Gradio on Hugging Face Spaces**.
 
 ---
 ## Live Demo
 
-🔗 **[Try the Web App Here](https://thiyaga158-pneumonia-detector.hf.space/)**  
+🔗 **[Try the Web App Here](https://thiyaga158-pneumonia-detector.hf.space/)** 
+
+### 📌 Sample: Normal Chest X-ray
+![normal](https://github.com/user-attachments/assets/24f96be3-38b7-4dfc-b7e9-74d325d1bd57)
+
+### 📌 Sample: Pneumonia Chest X-ray
+![pneumonia](https://github.com/user-attachments/assets/f57d152f-bdd1-4086-8434-e407529f53b0)
 
 ---
 
