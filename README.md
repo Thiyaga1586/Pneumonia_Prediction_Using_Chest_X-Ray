@@ -21,33 +21,58 @@ Pneumonia is a serious lung infection that can be fatal if not detected early. C
 
 ---
 
-## Project Evolution (What We Learned & Improved)
+## 📈 Project Evolution (What I Learned & Improved)
 
-This project went through several thoughtful stages, each driven by experimentation and learning:
+This project went through several thoughtful stages, each driven by experimentation and problem-solving:
 
-### Stage 1: Simple CNN (Baseline)
-- Started with a simple 3–layer CNN.
-- Achieved moderate accuracy (~75%), indicating underfitting.
+### 🧪 Stage 1: Simple CNN (Baseline)
+- Started with a simple 3-layer CNN.
+- Achieved moderate accuracy (~65%), indicating **underfitting** and lack of model capacity.
 
 ### Stage 2: Deep Custom CNN (8 Layers)
-- Increased convolutional depth.
-- Accuracy improved (~81%), but model quickly overfit due to limited dataset size.
+- Increased convolutional depth and added **SE Blocks** to better extract features.
+- Accuracy improved to ~75%, but still **below expectations**.
 
 ### Stage 3: Transfer Learning
-- Tried **EfficientNetB0** and **ResNet120** fine-tuned on the dataset.
-- These models yielded higher AUC but were inconsistent on real-world generalization.
+- Applied **EfficientNetB0** and **ResNet120** (fine-tuned).
+- Showed improved AUC and faster convergence, but models were **less stable** on real-world X-rays.
 
 ### Stage 4: Custom DeepResNet Replica
-- Built a deeper, ResNet-inspired model with residual connections and SE/CBAM blocks.
+- Built a deeper, ResNet-inspired model with residual connections.
 - This gave us more control and interpretability, with performance comparable to pretrained models.
 
-### Realization: **Data Size Bottleneck**
-- Original dataset had **just 5,216 X-rays**, leading to overfitting and poor generalization.
+### Realization: Dataset Bottlenecks
+- Initial dataset had only **5,216 X-rays**, which led to **overfitting**.
+- **Imbalance in Data entries:** ~3.5k Pneumonia vs ~1.5k Normal images.
+- Tried to mitigate with:
+  - **MixUp augmentation** (smoothing class boundaries)
+  - **Focal Loss** (focus on hard samples)
+- Accuracy peaked around **88%**, but generalization issues remained.
+- Also noticed **padding color** during resizing affected performance.
 
 ### Stage 5: Dataset Augmentation & Expansion
-- Collected and cleaned multiple pneumonia-related datasets.
-- Merged them to build a robust **22,000+ image dataset** (balanced and clean).
-- Resized using a custom function with **black padding** to maintain aspect ratio.
+- Combined and cleaned multiple pneumonia datasets.
+- Final dataset: **22,000+ high-quality, balanced images**.
+- Initially used images of size **512×512**, but later resized to **224×224** to reduce computational load as i increased my dataset to a large extent.
+- All images resized to 224×224 using a custom **resize + padding script**.
+- After experiments, switched to **black padding** for consistency.
+- Switched to **CBAM attention blocks** instead of **SE blocks** in ImprovedPneumonia Model(Custom CNN model).
+
+---
+
+## 🖼️ Padding Strategy Evaluation
+
+We experimented with various padding colors during image resizing to 224×224. Results:
+
+| Padding Color | Accuracy | Observations |
+|---------------|----------|--------------|
+| **White**   | ~88%     | Too bright; disrupted chest region contrast. |
+| **Gray**    | ~90%     | Better contrast but introduced visual noise. |
+| **Black**   | **~97%** | Best visual integrity; minimized distractions. |
+
+**Black padding was adopted** as the final strategy for both training and deployment.
+
+---
 
 ### Final Model (This Repo)
 - Enhanced ImprovedPneumonia with:
